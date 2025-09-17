@@ -107,8 +107,8 @@ def prepare_configs(request_keywords: dict, execution_environment: ExecutionEnvi
             f"Auto config directory configuration not supported for execution environment "
             f"{execution_environment}. Please set environment variable EMS_CONFIG_DIR"
         )
-
-    shutil.rmtree(target_dir)
+    if os.path.exists(target_dir):
+        shutil.rmtree(target_dir)
     if os.path.exists(os.path.join(config, "EXTEND_DEFAULT_CONFIG")):
         # config default config first and then overwrite with configured config
         shutil.copytree(get_config_dir(DEFAULT_EMS_CONFIG), target_dir)
