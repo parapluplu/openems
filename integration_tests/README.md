@@ -6,12 +6,6 @@ It's in a very early stage and currently only target to edge specific integratio
 # Requirements
 This project requires [poetry](https://python-poetry.org) to run.
 
-In the local development environment it also requires the openems project next to this project. So a directory structure
-like the following:
-- some_folder
-  - openems (exactly this name)
-  - openems_integration_tests (name doesn't matter)
-
 The openems project must have a build jar file (with `./gradlew buildEdge` executed in the openems directory) so the
 integration test can start and stop the ems service as desired.
 
