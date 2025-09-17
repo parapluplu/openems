@@ -1,4 +1,5 @@
 import os
+import pathlib
 import shutil
 from dataclasses import dataclass
 from enum import Enum
@@ -34,7 +35,7 @@ class ExecutionEnvironmentMixin:
 class ExecutionEnvironment(ExecutionEnvironmentMixin, Enum):
     DEVELOPER = (
         "http://localhost:8084/rest",
-        "/openems/config",
+        pathlib.Path("/openems/integration_test_config").resolve(),
         "http://localhost:8080",
     )
     # TODO add stages such as beta (develop branch state), prod (main branch state)
@@ -165,7 +166,7 @@ def openems_service(execution_environment: ExecutionEnvironment) -> OpenEmsServi
     # Determine service type based on environment
     if execution_environment in [ExecutionEnvironment.DEVELOPER]:
         # For local development, use the local process implementation
-        service = get_openems_service(ServiceType.LOCAL)
+        service = get_openems_service(ServiceType.LOCAL, java_opts=f"-Dfelix.cm.dir={execution_environment.ems_config_dir}")
     else:
         # For other environments, use systemd
         service = get_openems_service(ServiceType.SYSTEMD)

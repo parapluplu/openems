@@ -35,6 +35,7 @@ class LocalOpenEmsService(OpenEmsService):
             return
 
         cmd = f"java {self.java_opts} -jar {self.jar_path}"
+        logging.info(f"Starting OpenEMS with command: {cmd}")
         self.process = subprocess.Popen(
             cmd.split(),
             stdout=subprocess.DEVNULL if os.environ.get("HIDE_OPENEMS_LOGS", "false").lower() == "true" else None,
