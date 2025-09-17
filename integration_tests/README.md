@@ -9,6 +9,11 @@ This project requires [poetry](https://python-poetry.org) to run.
 The openems project must have a build jar file (with `./gradlew buildEdge` executed in the openems directory) so the
 integration test can start and stop the ems service as desired.
 
+Each time you update the project `pyproject.toml` file or when you setup the project initially execute:
+```
+poetry install
+```
+
 ## Usage
 Integration tests take care about starting/stopping the EMS service. So don't run another instance of the EMS service
 while executing the integration tests.
