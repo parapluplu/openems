@@ -18,9 +18,5 @@ By default, this package assumes you're using a Voltfang OpenEMS environment. Yo
 `openems_integration_tests.conftest.ExecutionEnvironment` which are:
 - `DEVELOPER` - Vanilla OpenEMS environment
 
-For the profile `DEVELOPER_VOLTFANG` tests expect OpenEMS configuration files in `~/development/data/edge/empty/config`.
-You can overwrite this location for every profile with the environment variable `EMS_CONFIG_DIR`. Integration tests will
-overwrite files in this directory! So be sure to have a backup of your configuration if you want to restore it.
-
 You can execute tests with
 `poetry run pytest openems_integration_tests`
