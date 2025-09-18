@@ -11,7 +11,7 @@ requests = "^2.32.3"
 polling = "^0.3.2"
 pytest = "^8.3.3"
 decorator = "^5.2.1"
-websocket-client = "^1.8.0"
+websockets = "^15.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
